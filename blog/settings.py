@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = True
+# DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -34,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'users'
+    'profiles'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +75,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': os.environ.get('DATABASE_PATH')
+        'NAME': os.environ.get('DATABASE_PATH', BASE_DIR / 'db.sqlite3')
     }
 }
 
