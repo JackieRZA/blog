@@ -17,13 +17,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'some-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Application definition
 
@@ -35,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'profiles'
+    'profiles',
+    'addresses'
 ]
 
 MIDDLEWARE = [
@@ -120,23 +120,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Setting for logging
 LOGGING = {
-   'version': 1,
-   'disable_existing_loggers': False,
-   'handlers': {
-       'console': {
-           'class': 'logging.StreamHandler',
-       },
-   },
-   'loggers': {
-       '': {
-           'handlers': ['console'],
-           'level': 'INFO',
-       },
-       'django.db.backends': {
-           'handlers': ['console'],
-           'level': 'ERROR',
-       }
-   }
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+        }
+    }
 }
 
 # Environment variables

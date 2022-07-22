@@ -1,5 +1,4 @@
 """blog URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -16,9 +15,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from posts.views import index
+from posts.views import index, post, records
+from profiles.views import profile
+from addresses.views import address
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', index, name='index'),
+    # Admin
+    path('admin/', admin.site.urls),
+    path('', index, name='index'),
+
+    # Posts
+    path('posts/', post, name='post'),
+    path('posts/records', records, name='records'),
+
+    # Profile
+    path('profiles/', profile, name='profile'),
+
+    # Address
+    path('addresses/', address, name='address')
 ]
